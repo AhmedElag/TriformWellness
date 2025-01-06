@@ -276,8 +276,9 @@ Additionally:
 
 
 /* home page top pic Section */
+/* Base styles for larger devices (desktop/laptop) */
 #idris-image {
-    height: 100vh; /* Full viewport height */
+    height: 100dvh; /* Full viewport height */
     width: 100%; /* Full width */
     background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)), 
                 url("../images/idris-images/homepage.webp") no-repeat center center;
@@ -287,21 +288,25 @@ Additionally:
     background-repeat: no-repeat; /* Prevents repetition of the image */
     z-index: 0;
   }
-  
-  /* Ensure the height adapts for devices with smaller screen heights */
-  @media (max-height: 600px) {
-    #idris-image {
-      height: 60vh; /* Adjusts height for small screen heights */
-    }
+
+
+/* For devices with very small height, reduce to 60vh to avoid abrupt cropping */
+@media (max-height: 600px) {
+  #idris-image {
+    height: 100vh;
   }
-  
-  /* Adjust image for smaller devices */
-  @media (max-width: 768px) {
-    #idris-image {
-      background-attachment: scroll; /* Avoid 'fixed' on mobile for smoother scrolling */
-      background-position: top; /* Adjusts focus for smaller screens */
-    }
+}
+
+/* For tablets and mobile screens */
+@media (max-width: 768px) {
+  #idris-image {
+    background-attachment: scroll; /* Better performance on mobile */
+    background-position: top;      /* Adjust focus for smaller screens if needed */
+    height: auto;                 
+    min-height: 100vh;             /* Ensures the section still has a decent height */
   }
+}
+
 /*idris logo pic and writing under with button format*/
   #idris-logo img {
     width: 50%; /* Adjust logo size */
@@ -1990,3 +1995,16 @@ This section provides a clean and professional interface for user interaction an
     margin-bottom: 0px;
   }
 }
+/* issue fix 04-01-2025 start */
+nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
+    pointer-events: none;
+  }
+  body > header {
+    background: #34495e;
+  }
+  
+  #nav-bar.scroll {
+    background: #2c3e50;
+  }
+  
+/* issue fix end   */
