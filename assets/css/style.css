@@ -193,46 +193,47 @@ h3 {
 /* ===== Mobile override: show full desktop nav on small screens ===== */
 @media (max-width: 900px) {
   /* 1) Show the menu list even if it's using [hidden] / off-canvas tricks */
-  #nav-menu[hidden] { 
-    display: flex !important; 
+      #logo {
+    flex: 0 0 auto;
   }
+  #logo img {
+    height: clamp(28px, 6vw, 40px);
+    width: auto;
+  }
+
   #nav-menu,
   nav .menu,
   #primary-nav {
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    height: 50px;
-    padding:8px 12px;          /* less padding on small screens */
-    flex-wrap: wrap; 
-    position: fixed;
-    top: 10px;
-    left: 0;
-    right: 0;
-    z-index: 2000;
-    transition: 0.5s ease-in-out;
-    margin-left: auto;
+    display: flex !important;
+    margin-left: auto;            /* push to right */
+    align-items: center;
     justify-content: flex-end;
-    font-size: large;
-      flex: 0 1 auto;                    /* shrink if needed */
-                  /* space between items */
-}
-
-  /* 2) Make the items flow horizontally, readable & tappable */
-  #nav-menu > li,
-  nav .menu > li {
-    display: inline-flex;
-            /* override 30px from desktop */
-    padding: 0;   
-    }
-  #nav-menu a.nav-link,
-  nav .menu a {
-    display: inline-block;
-    padding: 6px 8px;
-    font-size: 16px;                 /* good for older clients */
-    line-height: 1;
-    text-decoration: none;
+    flex-wrap: nowrap;
+    gap: clamp(6px, 2vw, 14px);   /* fluid spacing between items */
   }
+  /* Fallback if iOS ignores flex gap */
+  @supports not (gap: 8px) {
+    #nav-menu > li + li { margin-left: clamp(6px, 2vw, 14px); }
+  }
+  /* 2) Make the items flow horizontally, readable & tappable */
+  #nav-menu > li {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+  }
+#nav-menu > li + li { margin-left: 10px; }
+
+/* Link sizing so they fit in one row */
+#nav-menu a.nav-link {
+  display: inline-block;
+  white-space: nowrap;          /* avoid wrapping mid-word */
+  font-size: 0.92rem;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  padding: 6px 8px;
+  font-weight: 700;             /* keep that bolder look */
+}
 
     #nav-bar.scroll {
     background: #2e753b;
@@ -245,9 +246,9 @@ h3 {
   #nav-bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    flex-wrap: wrap;                 /* allows menu to drop to next line */
+    justify-content: flex-start;  /* logo left, menu pushed right */
+    flex-wrap: nowrap;
+    padding: clamp(6px, 2vw, 12px) clamp(10px, 3vw, 16px);
   }
 
   /* 5) If you had an off-canvas mobile container, neutralize it */
@@ -261,11 +262,6 @@ h3 {
 }
 
 /* Optional tiny phones: tighten spacing a touch */
-@media (max-width: 360px) {
-  #nav-menu a.nav-link { padding: 8px 10px; font-size: 15px; }
-  #nav-menu { gap: 1px; }
-}
-
 
 /* 
 Top Pictures Format Section Start
@@ -334,18 +330,32 @@ Additionally:
 
 
 #idris-logo h1 {
-    width: 50%; /* Adjust logo size */
-    position: absolute; /* Places it relative to the nearest positioned parent */
-    top: 60%; /* Centers vertically */
-    left: 50%; /* Centers horizontally */
-    transform: translate(-50%, 0); /* Ensures perfect centering */
-    color: #cccccc; /* Text color */
-    text-align: center; /* Ensure text is centered */
-    font-size: 1.5rem; /* Adjust text size */
-    font-weight: 700; /* Boldness level */
-    text-transform: uppercase; /* Make the text all uppercase */
-}
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 0);
 
+  /* keep one line but don't clip */
+  white-space: nowrap;
+  overflow: visible;         /* was hidden */
+  text-overflow: clip;       /* was ellipsis */
+
+  /* fluid sizing (desktop/tablet defaults) */
+  font-size: clamp(1.0rem, 4.0vw, 2.2rem);
+
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #cccccc;
+  width: auto;
+  max-width: 96vw;           /* safety so it never exceeds viewport */
+  text-align: center;
+}
+@media (min-width: 900px) {
+  #idris-logo h1 {
+    font-size: clamp(1.1rem, 2.6vw, 1.8rem); /* smaller max + gentler scale */
+    letter-spacing: clamp(0.2px, 0.35vw, 1px);
+  }
+}
 
 #idris-logo > .button {
     position: absolute;
@@ -367,6 +377,25 @@ Additionally:
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+
+  /* --- fluid sizing --- */
+  font-size: clamp(0.9rem, 1.6vw, 1.15rem);          /* text scales with viewport */
+  letter-spacing: clamp(0.4px, 0.25vw, 1.2px);       /* modest tracking */
+  padding: clamp(8px, 1.1vw, 12px) clamp(14px, 2vw, 22px); /* vertical / horizontal */
+  border-width: clamp(1.5px, 0.25vw, 2.5px);         /* border scales */
+  border-radius: clamp(8px, 1.2vw, 12px);    
+  white-space: nowrap;                      /* don't wrap the text */
+        /* rounded corners scale */
+
+  /* colors */
+  color: #ccc;
+  background: transparent;
+  border-style: solid;
+  border-color: currentColor;                         /* matches text color */
+
+  text-decoration: none;
+  display: inline-block;
+  transition: color .2s ease, border-color .2s ease, transform .15s ease;
 }
 
 /* First button sits where the old one was */
@@ -376,7 +405,7 @@ Additionally:
 
 /* Second button sits underneath; tweak +60px to your taste */
 #idris-logo > a.button:nth-of-type(2) {
-  top: calc(65% + 60px);
+  top: calc(65% + 55px);
 }
 
 /*services page top image*/
@@ -615,13 +644,31 @@ Key Elements:
     transform: translateY(-3px); /* Slight lift effect */
   }
   .about-idris-photo {
-justify-self: center;
+  justify-self: center;
   width: 300px;
   height: 300px;
   object-fit: cover;
   border-radius: 50%;              /* circle headshot */
   border: 2px solid #2e753b;       /* matches your green accent */
   display: block;
+}
+
+
+/* Mobile: ensure true centering (Safari-safe) and reasonable size */
+@media (max-width: 768px) {
+  .container.coaches .coach {
+    display: grid;
+    grid-template-columns: 1fr;   /* stack image over text */
+    justify-items: center;        /* center grid children */
+    text-align: center;
+  }
+
+  .about-idris-photo {
+    margin: 0 auto;               /* centers even if grid fallback */
+    justify-self: center;         /* grid centering */
+    width: 200px;                 /* smaller on phones */
+    height: 200px;
+  }
 }
 
 /* 
