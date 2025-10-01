@@ -108,19 +108,21 @@ h3 {
     align-items: center;
     justify-content: space-between;
     height: 50px;
-    padding: 16px;
+    padding: 8px 12px;          /* less padding on small screens */
+    flex-wrap: wrap; 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 200;
+    z-index: 2000;
     transition: 0.5s ease-in-out;
+    background: #2e753ba2;
+    font-size: large;
 }
 
 #nav-bar.scroll {
-    height: 35px;
-    background: #fff;
-    box-shadow: 0px 10px 30px rgba(37, 37, 49, 0.1);
+    background: #2e753b;
+    box-shadow: 0px 10px 30px rgba(37, 37, 49, 0.932);
     transition: 0.5s ease-in-out;
 }
 
@@ -145,18 +147,20 @@ h3 {
 
 .nav-link {
     text-decoration: none;
-    color: #dcdcdc;
-    font-size: 80%;
+    color: #ffffff;
+    font-size: 100%;
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1.3;
     transition: 0.3s ease-in-out;
+    font-weight: 800;      
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #fff;
+    color: #a1a1a1;
     transition: 0.3s ease-in-out;
+    font-weight: 700;
 }
 
 .nav-link:not(:hover),
@@ -180,84 +184,86 @@ h3 {
 
 .underlined {
     border-bottom: 1px solid #2e753b;
-    color: #2e753b;
+    color: #000000;
     padding-bottom: 3px;
     transition: 0.3s ease-in-out;
 }
 
-.mobile-nav-link:hover,
-.nav-link.black:hover {
-    transition: 0.3s ease-in-out;
-    color: #000;
-}
 
-.mobile-nav-link:not(:hover),
-.nav-link.black:not(:hover) {
-    transition: 0.3s ease-in-out;
-}
-
-.mobile-nav-link.active:after {
-    transition: 0.3s ease-in-out;
-    width: 100%;
+/* ===== Mobile override: show full desktop nav on small screens ===== */
+@media (max-width: 900px) {
+  /* 1) Show the menu list even if it's using [hidden] / off-canvas tricks */
+  #nav-menu[hidden] { 
+    display: flex !important; 
+  }
+  #nav-menu,
+  nav .menu,
+  #primary-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+    height: 50px;
+    padding:8px 12px;          /* less padding on small screens */
+    flex-wrap: wrap; 
+    position: fixed;
+    top: 10px;
     left: 0;
+    right: 0;
+    z-index: 2000;
+    transition: 0.5s ease-in-out;
+    margin-left: auto;
+    justify-content: flex-end;
+    font-size: large;
+      flex: 0 1 auto;                    /* shrink if needed */
+                  /* space between items */
 }
 
-.mobile-nav-link:after,
-.nav-link.black:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0px;
-    content: "";
-    display: block;
-    height: 1px;
-    left: 50%;
-    position: absolute;
-    background: #2e753b;
-    transition: width 0.3s ease 0s;
-    width: 0;
-}
-
-.mobile-nav-link:hover:after,
-.nav-link.black:hover:after {
-    width: 100%;
-    left: 0;
-}
-
-.mobile-nav-link {
+  /* 2) Make the items flow horizontally, readable & tappable */
+  #nav-menu > li,
+  nav .menu > li {
+    display: inline-flex;
+            /* override 30px from desktop */
+    padding: 0;   
+    }
+  #nav-menu a.nav-link,
+  nav .menu a {
+    display: inline-block;
+    padding: 6px 8px;
+    font-size: 16px;                 /* good for older clients */
+    line-height: 1;
     text-decoration: none;
-    color: #696969;
-    font-size: 1.25rem;
-    padding: 1rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    line-height: 1.3;
-    transition: 0.3s ease-in-out;
+  }
+
+    #nav-bar.scroll {
+    background: #2e753b;
+
+    box-shadow: 0px 10px 30px rgba(37, 37, 49, 0.932);
+    transition: 0.5s ease-in-out;
+    }
+
+  /* 4) Keep the bar layout sane: logo left, links right, allow wrap */
+  #nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;                 /* allows menu to drop to next line */
+  }
+
+  /* 5) If you had an off-canvas mobile container, neutralize it */
+  #mobile-nav {
+    position: static !important;
+    height: auto !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
 }
 
-#logo {
-    margin-left: 30px;
-    z-index: 5;
-}
-
-#white-nav-logo {
-    position:absolute;
-    opacity:1;
-    transition:opacity 0.5s ease-in-out;
-}
-
-#white-nav-logo.transparent {
-    opacity: 0;
-    transition:opacity 0.5s ease-in-out;
-}
-
-#red-nav-logo.mobile-nav {
-    opacity: 1;
-    pointer-events: auto;
-    transition:opacity 0.5s ease-in-out;
-}
-
-#logo.mobile-nav {
-    pointer-events: auto;
-    z-index: 6;
+/* Optional tiny phones: tighten spacing a touch */
+@media (max-width: 360px) {
+  #nav-menu a.nav-link { padding: 8px 10px; font-size: 15px; }
+  #nav-menu { gap: 1px; }
 }
 
 
@@ -287,9 +293,9 @@ Additionally:
     background-attachment: scroll; /* Better performance on mobile (change from 'fixed') */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents repetition of the image */
-    z-index: 0;
+    z-index: -5;
+    
   }
-
 
 /* For devices with very small height, reduce to 60vh to avoid abrupt cropping */
 @media (max-height: 600px) {
@@ -303,7 +309,7 @@ Additionally:
   #idris-image {
     background-attachment: scroll; /* Better performance on mobile */
     background-position: top;      /* Adjust focus for smaller screens if needed */
-    height: auto;                 
+    height: auto;              /* Allows height to adjust based on content */
     min-height: 100vh;             /* Ensures the section still has a decent height */
   }
 }
@@ -315,8 +321,16 @@ Additionally:
     top: 48%; /* Centers vertically */
     left: 50%; /* Centers horizontally */
     transform: translate(-50%, -50%); /* Ensures perfect centering */
+    
 }
-
+#idris-logo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.45) 35%, rgba(0,0,0,0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
 
 
 #idris-logo h1 {
@@ -327,7 +341,7 @@ Additionally:
     transform: translate(-50%, 0); /* Ensures perfect centering */
     color: #cccccc; /* Text color */
     text-align: center; /* Ensure text is centered */
-    font-size: 1rem;
+    font-size: 1.5rem; /* Adjust text size */
     font-weight: 700; /* Boldness level */
     text-transform: uppercase; /* Make the text all uppercase */
 }
@@ -340,7 +354,6 @@ Additionally:
     transform: translate(-50%, 0); /* Ensures horizontal centering */
     margin-top: 10px; /* Optional: Adds space between the <h1> and button */
     padding: 10px 20px; /* Button size */
-    font-size: 1rem; /* Button text size */
     color: #cccccc; /* Button text color */
     background-color: transparent; /* Button background color */
     border: 2px solid #cccccc; /* Grey border */
@@ -350,7 +363,21 @@ Additionally:
     transition: all 0.3s ease; /* Smooth hover effect */
 }
 
+#idris-logo > a.button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
 
+/* First button sits where the old one was */
+#idris-logo > a.button:first-of-type {
+  top: 65%;
+}
+
+/* Second button sits underneath; tweak +60px to your taste */
+#idris-logo > a.button:nth-of-type(2) {
+  top: calc(65% + 60px);
+}
 
 /*services page top image*/
 #idris-image-small-ser {
@@ -587,7 +614,15 @@ Key Elements:
     border-color: #ffffff;
     transform: translateY(-3px); /* Slight lift effect */
   }
-  
+  .about-idris-photo {
+justify-self: center;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;              /* circle headshot */
+  border: 2px solid #2e753b;       /* matches your green accent */
+  display: block;
+}
 
 /* 
 This section is featured on the homepage and provides information about Idris' expertise and services. 
@@ -1555,7 +1590,7 @@ This section provides a clean and professional interface for user interaction an
 
 /* Mobile Menu Queries */
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
 
     #nav-menu {
         display: none;
@@ -1758,16 +1793,16 @@ This section provides a clean and professional interface for user interaction an
 
     #nav-bar.scroll {
         height: 50px;
-        background: transparent;
+        background: rgba(255, 255, 255, 0.95);
 }
 
     #nav-menu > li {
         overflow: hidden;
-        padding: 10px 0px 0px 0px;
+        padding: 6px 0px 0px 0px;
         margin-right: 0px;
         z-index: inherit;
      }
-}
+} */
 
 /* General Queries */
 
@@ -2009,7 +2044,7 @@ This section provides a clean and professional interface for user interaction an
   }
 }
 /* issue fix 04-01-2025 start */
-nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
+/* nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
     pointer-events: none;
   }
   body > header {
@@ -2017,9 +2052,9 @@ nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
   }
   
   #nav-bar.scroll {
-    background: #ffffff00;
+    background: #107a1593;
   }
-  
+   */
 /* issue fix end   */
 
 /* Inquiry form styling */
