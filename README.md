@@ -2,7 +2,7 @@
 
 A modern, responsive, and user-friendly website designed for a personal trainer to showcase services, testimonials, and contact information.
 
-**Live Site**: [Personal Trainer Website](https://ahmedelag.github.io/Personal_Trainer_Website/index.html)
+**Live Site**: [Personal Trainer Website](https://www.triformwellness.com/)
 
 ---
 
