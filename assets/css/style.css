@@ -284,7 +284,7 @@ Additionally:
     height: 100dvh; /* Full viewport height */
     width: 100%; /* Full width */
     background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)), 
-                url("../images/idris-images/homepage.webp") no-repeat center center;
+                url("../images/idris-images/home-image.webp") no-repeat center center;
     background-size: cover; /* Ensures the image covers the container */
     background-attachment: scroll; /* Better performance on mobile (change from 'fixed') */
     background-position: center; /* Centers the image */
@@ -292,6 +292,7 @@ Additionally:
     z-index: -5;
     
   }
+
 
 /* For devices with very small height, reduce to 60vh to avoid abrupt cropping */
 @media (max-height: 600px) {
@@ -481,14 +482,18 @@ Additionally:
   }
 
   /*contact page top image*/
-#idris-image-small-con {
-    position: relative;
-    height: 100vh; /* Full viewport height */
-    width: 100%; /* Full width */
-    overflow: hidden; /* Ensures video doesn't overflow */
-    z-index: 0;
-}
 
+#idris-image-small-con {
+    height: 100dvh;
+    width: 100%;
+    background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)),
+                url("../images/idris-images/moeimage.webp") no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -5;
+}
 #idris-image-small-con video {
     position: absolute;
     top: 50%; /* Center the video vertically */
