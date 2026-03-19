@@ -307,7 +307,9 @@ Additionally:
     background-attachment: scroll; /* Better performance on mobile (change from 'fixed') */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents repetition of the image */
-    z-index: -5;
+    overflow: hidden;
+    z-index: 0;
+
     
   }
 
@@ -336,7 +338,7 @@ Additionally:
   top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0;
+  opacity: 1;
 }
 
 #idris-logo::before {
@@ -353,7 +355,7 @@ Additionally:
   top: 60%;
   left: 50%;
   transform: translate(-50%, 0);
-  opacity: 0;
+  opacity: 1;
 
   white-space: nowrap;
   overflow: visible;
@@ -380,14 +382,15 @@ Additionally:
   border-radius: 10px;
   text-decoration: none;
   display: inline-block;
-  transition: all 0.3s ease;
+  opacity: 1;
+ 
 }
 
 #idris-logo > a.button {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
+  opacity: 1;
   font-size: clamp(0.9rem, 1.6vw, 1.15rem);
   letter-spacing: clamp(0.4px, 0.25vw, 1.2px);
   padding: clamp(8px, 1.1vw, 12px) clamp(14px, 2vw, 22px);
@@ -408,72 +411,17 @@ Additionally:
 
 #idris-logo > a.button:first-of-type {
   top: 65%;
+  opacity: 1;
 }
 
 #idris-logo > a.button:nth-of-type(2) {
   top: calc(65% + 55px);
+  opacity: 1;
 }
 
-/* Trigger animations only when hero is active */
-#idris-logo.hero-reveal.active img {
-  animation: heroLogoSlide 0.8s ease-out forwards;
-}
 
-#idris-logo.hero-reveal.active h1 {
-  animation: heroTitleSlide 0.8s ease-out 0.15s forwards;
-}
 
-#idris-logo.hero-reveal.active > a.button:first-of-type {
-  animation: heroButton1Slide 0.8s ease-out 0.25s forwards;
-}
 
-#idris-logo.hero-reveal.active > a.button:nth-of-type(2) {
-  animation: heroButton2Slide 0.8s ease-out 0.45s forwards;
-}
-
-@keyframes heroLogoSlide {
-  from {
-    opacity: 0;
-    transform: translate(calc(-50% - 40px), -50%);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes heroTitleSlide {
-  from {
-    opacity: 0;
-    transform: translate(calc(-50% - 40px), 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-@keyframes heroButton1Slide {
-  from {
-    opacity: 0;
-    transform: translateX(calc(-50% - 40px));
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes heroButton2Slide {
-  from {
-    opacity: 0;
-    transform: translateX(calc(-50% - 40px));
-  }
-  to {
-    opacity: 1;
-    transform: translateX(-50%);
-  }
-}
 /*services page top image*/
 #idris-image-small-ser {
     position: relative;
@@ -546,8 +494,7 @@ Additionally:
     }
   }
 
-  /*contact page top image*/
-
+  
 #idris-image-small-con {
     height: 100dvh;
     width: 100%;
@@ -2085,10 +2032,12 @@ This section provides a clean and professional interface for user interaction an
 
 @media (max-width: 768px) {
     #idris-logo > img {
+        opacity: 1;
         max-width: 85%;
     }
 
     #idris-logo > h1 {
+        opacity: 1;
         font-size: 75%;
     }
 
@@ -2262,32 +2211,4 @@ This section provides a clean and professional interface for user interaction an
 
 .inquiry-form button:hover {
   background-color: #245731;
-}
-
-.hero-slide-left {
-  animation: heroSlideLeft 1s linear forwards;
-}
-
-@keyframes heroSlideLeft {
-  0%{
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  0%{
-    opacity: 0;
-    transform: translateX(100px);
-  }
-}
-.delay-4 {
-  animation-delay: 0.8s;
-}
-.hero-reveal-left {
-  opacity: 1;
-  transform: translateX(0px);
-  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-reveal-left.is_hidden {
-  opacity: 0;
-  transform: translateX(-80px);
 }
