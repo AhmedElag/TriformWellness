@@ -23,6 +23,23 @@
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <!-- End CSS -->
   </head>
+  <!-- Calendly Floating Booking Button -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<script>
+window.addEventListener('load', function () {
+  Calendly.initBadgeWidget({
+    url: 'https://calendly.com/ahmelag/30min',
+    text: 'Book Free Consultation',
+    color: '#2e753b',
+    textColor: '#ffffff',
+    branding: false
+  });
+});
+</script>
+<!-- End Calendly Floating Booking Button -->
   <body class="animate__animated animate__fadeIn">
     <header>
       <div id="idris-image">
@@ -55,7 +72,7 @@
     </header>
     <!-- idris Section -->
     <section>
-      <div id="idris-logo">
+      <div id="idris-logo" class="hero-reveal">
         <img src="assets/images/logo/logo_transparent(3).png" alt="Triform Wellness" />
         <div class="logo-text"></div>
           <h1>Stretch Therapy &amp; Personal Training</h1>
@@ -71,7 +88,7 @@
 <section class="section">
   <div id="about-idris">
     <div class="container coaches">
-      <div class="coach">
+      <div class="coach reveal-left">
         <img class="about-idris-photo" src="assets/images/idris-images/IDRIS_PIC2.WEBP" alt="Coach & Co-founder Idris">
 
         <h2>Coach Idris</h2>
@@ -84,7 +101,7 @@
           <li>Certified Personal Trainer</li>
         </ul>
       </div>
-      <div class="coach">
+      <div class="coach reveal-right">
                 <img class="about-idris-photo" src="assets/images/idris-images/MOE_PIC_1.WEBP" alt="Coach & Co-founder Idris">
 
         <h2>Coach Moe</h2>

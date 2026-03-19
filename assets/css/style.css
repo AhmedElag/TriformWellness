@@ -116,7 +116,7 @@ h3 {
     right: 0;
     z-index: 2000;
     transition: 0.5s ease-in-out;
-    background: #2e753ba2;
+    background: #2e753b00;
     font-size: large;
 }
 
@@ -173,17 +173,17 @@ h3 {
     position: relative;
     transition: 0.3s ease-in-out;
     display: inline-block;
-    color: #696969;
+    color: #ffffff;
 }
 
 .mobile-nav-link.active,
 .nav-link.black.active {
-    color: #000;
+    color: #524949;
     transition: 0.3s ease-in-out;
 }
 
 .underlined {
-    border-bottom: 1px solid #2e753b;
+    border-bottom: 1px solid #f3f8f400;
     color: #000000;
     padding-bottom: 3px;
     transition: 0.3s ease-in-out;
@@ -312,14 +312,15 @@ Additionally:
 }
 
 /*idris logo pic and writing under with button format*/
-  #idris-logo img {
-    width: 50%; /* Adjust logo size */
-    position: absolute; /* Places it relative to the nearest positioned parent */
-    top: 48%; /* Centers vertically */
-    left: 50%; /* Centers horizontally */
-    transform: translate(-50%, -50%); /* Ensures perfect centering */
-    
+#idris-logo img {
+  width: 50%;
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
 }
+
 #idris-logo::before {
   content: "";
   position: absolute;
@@ -329,49 +330,39 @@ Additionally:
   pointer-events: none;
 }
 
-
 #idris-logo h1 {
   position: absolute;
   top: 60%;
   left: 50%;
   transform: translate(-50%, 0);
+  opacity: 0;
 
-  /* keep one line but don't clip */
   white-space: nowrap;
-  overflow: visible;         /* was hidden */
-  text-overflow: clip;       /* was ellipsis */
-
-  /* fluid sizing (desktop/tablet defaults) */
+  overflow: visible;
+  text-overflow: clip;
   font-size: clamp(1.0rem, 4.0vw, 2.2rem);
-
   font-weight: 700;
   text-transform: uppercase;
   color: #cccccc;
   width: auto;
-  max-width: 96vw;           /* safety so it never exceeds viewport */
+  max-width: 96vw;
   text-align: center;
-}
-@media (min-width: 900px) {
-  #idris-logo h1 {
-    font-size: clamp(1.1rem, 2.6vw, 1.8rem); /* smaller max + gentler scale */
-    letter-spacing: clamp(0.2px, 0.35vw, 1px);
-  }
 }
 
 #idris-logo > .button {
-    position: absolute;
-    top: 65%; /* Adjust this value to position it under the <h1> */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, 0); /* Ensures horizontal centering */
-    margin-top: 10px; /* Optional: Adds space between the <h1> and button */
-    padding: 10px 20px; /* Button size */
-    color: #cccccc; /* Button text color */
-    background-color: transparent; /* Button background color */
-    border: 2px solid #cccccc; /* Grey border */
-    border-radius: 10px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Proper sizing */
-    transition: all 0.3s ease; /* Smooth hover effect */
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #cccccc;
+  background-color: transparent;
+  border: 2px solid #cccccc;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 #idris-logo > a.button {
@@ -379,36 +370,92 @@ Additionally:
   left: 50%;
   transform: translateX(-50%);
 
-  /* --- fluid sizing --- */
-  font-size: clamp(0.9rem, 1.6vw, 1.15rem);          /* text scales with viewport */
-  letter-spacing: clamp(0.4px, 0.25vw, 1.2px);       /* modest tracking */
-  padding: clamp(8px, 1.1vw, 12px) clamp(14px, 2vw, 22px); /* vertical / horizontal */
-  border-width: clamp(1.5px, 0.25vw, 2.5px);         /* border scales */
-  border-radius: clamp(8px, 1.2vw, 12px);    
-  white-space: nowrap;                      /* don't wrap the text */
-        /* rounded corners scale */
+  font-size: clamp(0.9rem, 1.6vw, 1.15rem);
+  letter-spacing: clamp(0.4px, 0.25vw, 1.2px);
+  padding: clamp(8px, 1.1vw, 12px) clamp(14px, 2vw, 22px);
+  border-width: clamp(1.5px, 0.25vw, 2.5px);
+  border-radius: clamp(8px, 1.2vw, 12px);
+  white-space: nowrap;
 
-  /* colors */
   color: #ccc;
   background: transparent;
   border-style: solid;
-  border-color: currentColor;                         /* matches text color */
+  border-color: currentColor;
 
   text-decoration: none;
   display: inline-block;
   transition: color .2s ease, border-color .2s ease, transform .15s ease;
+  opacity: 0;
 }
 
-/* First button sits where the old one was */
 #idris-logo > a.button:first-of-type {
   top: 65%;
 }
 
-/* Second button sits underneath; tweak +60px to your taste */
 #idris-logo > a.button:nth-of-type(2) {
   top: calc(65% + 55px);
 }
 
+/* Trigger animations only when hero is active */
+#idris-logo.hero-reveal.active img {
+  animation: heroLogoSlide 0.8s ease-out forwards;
+}
+
+#idris-logo.hero-reveal.active h1 {
+  animation: heroTitleSlide 0.8s ease-out 0.15s forwards;
+}
+
+#idris-logo.hero-reveal.active > a.button:first-of-type {
+  animation: heroButton1Slide 0.8s ease-out 0.25s forwards;
+}
+
+#idris-logo.hero-reveal.active > a.button:nth-of-type(2) {
+  animation: heroButton2Slide 0.8s ease-out 0.45s forwards;
+}
+
+@keyframes heroLogoSlide {
+  from {
+    opacity: 0;
+    transform: translate(calc(-50% - 40px), -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes heroTitleSlide {
+  from {
+    opacity: 0;
+    transform: translate(calc(-50% - 40px), 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes heroButton1Slide {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-50% - 40px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes heroButton2Slide {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-50% - 40px));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
 /*services page top image*/
 #idris-image-small-ser {
     position: relative;
@@ -657,7 +704,50 @@ Key Elements:
   border: 2px solid #2e753b;       /* matches your green accent */
   display: block;
 }
+/* LEFT CARD (Idris) */
+/* Service card reveal animations */
+.reveal-left,
+.reveal-right,
+.reveal-up {
+  opacity: 0;
+  will-change: opacity, transform;
+} 
 
+.reveal-up {
+  transform: translateY(70px) scale(0.94);
+  transition: opacity 0.85s ease, transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-120px) scale(0.92);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+
+.reveal-left.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+
+/* RIGHT CARD (Moe) */
+.reveal-right {
+  opacity: 0;
+  transform: translateX(120px) scale(0.92);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+
+.reveal-right.active {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
 
 /* Mobile: ensure true centering (Safari-safe) and reasonable size */
 @media (max-width: 768px) {
@@ -667,6 +757,7 @@ Key Elements:
     justify-items: center;        /* center grid children */
     text-align: center;
   }
+/* Scroll reveal animation for coach cards */
 
   .about-idris-photo {
     margin: 0 auto;               /* centers even if grid fallback */
@@ -934,6 +1025,7 @@ This section ensures a clean and interactive layout for users to explore and com
 
 #coaching-services {
     text-align: center;
+    overflow: hidden;
 }
 
 #coaching-services > .column-container > h1 {
@@ -2152,4 +2244,33 @@ This section provides a clean and professional interface for user interaction an
 
 .inquiry-form button:hover {
   background-color: #245731;
+}
+
+.hero-slide-left {
+  animation: heroSlideLeft 1s linear forwards;
+}
+
+@keyframes heroSlideLeft {
+  0%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  0%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+.delay-4 {
+  animation-delay: 0.8s;
+}
+.hero-reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.hero-reveal-left.active {
+  opacity: 1;
+  transform: translateX(0);
 }

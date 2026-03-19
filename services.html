@@ -25,6 +25,23 @@
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <!-- End CSS -->
   </head>
+  <!-- Calendly Floating Booking Button -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<script>
+window.addEventListener('load', function () {
+  Calendly.initBadgeWidget({
+    url: 'https://calendly.com/ahmelag/30min',
+    text: 'Book Free Consultation',
+    color: '#2e753b',
+    textColor: '#ffffff',
+    branding: false
+  });
+});
+</script>
+<!-- End Calendly Floating Booking Button -->
   <body class="animate__animated animate__fadeIn">
  <header>
   <div id="idris-image-small-ser">
@@ -73,10 +90,10 @@
     <section class="section">
       <div id="coaching-services">
         <!-- Coaching Comparison Plans -->
-        <div class="column-container">
+        <div class="column-container reveal-up">
           <h2 class="text-title"> We offer various types of coaching to suit our clients' needs: Stretch Therapy, Personal Training, and Online Plans. </h2>
           <div id="coaching-comparisons">
-            <div class="coaching-left">
+            <div class="coaching-left reveal-left">
               <div class="coaching-type-inner">
                 <div class="coaching-wrap">
                   <div class="coaching-icon">
@@ -98,12 +115,11 @@
                   <div class="coaching-button">
                     <!--<button class="button-dark coaching-scroll" id="stretch-tab" aria-label="Learn more by having the browser scroll down to the relevant section.">Learn More</button>-->
                     <!--<a href="#stretch" aria-controls="stretch" data-toggle="tab">Stretch Therapy</a>-->
-
                   </div>
                 </div>
               </div>
             </div>
-            <div class="coaching-center">
+            <div class="coaching-center reveal-up">
               <div class="coaching-type-inner">
                 <div class="coaching-wrap">
                   <div class="coaching-icon">
@@ -129,7 +145,7 @@
                 </div>
               </div>
             </div>
-            <div class="coaching-right">
+            <div class="coaching-right reveal-right">
               <div class="coaching-type-inner">
                 <div class="coaching-wrap">
                   <div class="coaching-icon">
@@ -181,7 +197,7 @@
   </div>
   <!-- End Coaching Tabs -->
 
-  <div class="container">
+  <div class="container reveal-up">
     <div class="tab-content">
       <!-- Stretch Therapy -->
       <div id="stretch" class="tab-pane animate__animated animate__fadeIn active-tab" role="tabpanel">
@@ -251,7 +267,7 @@
 <!-- End Coaching Comparison -->
 
     <!-- Consultation Call -->
-    <section class="section">
+    <section class="section reveal-up">
         <div id="about-idris">
             <div class="container">
                 <h2>Book your free Consultation Call now</h2>
