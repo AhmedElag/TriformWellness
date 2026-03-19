@@ -212,15 +212,23 @@ function initRevealAnimation() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("active");
+        if (entry.target.classList.contains("hero-reveal-left")) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("is-hidden");
+          } else {
+            entry.target.classList.add("is-hidden");
+          }
         } else {
-          entry.target.classList.remove("active");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          } else {
+            entry.target.classList.remove("active");
+          }
         }
       });
     },
     {
-      threshold: 0.2
+      threshold: 0.15
     }
   );
 
