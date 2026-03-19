@@ -189,6 +189,24 @@ h3 {
     transition: 0.3s ease-in-out;
 }
 
+#logo a {
+  position: relative;
+  display: inline-block;
+  height: 50px;
+}
+
+#logonav,
+#nav-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: auto;
+}
+
+#logonav {
+  position: relative;
+}
 
 /* ===== Mobile override: show full desktop nav on small screens ===== */
 @media (max-width: 900px) {
