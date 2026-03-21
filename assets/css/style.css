@@ -121,7 +121,7 @@ h3 {
 }
 
 #nav-bar.scroll {
-    background: #2e753b;
+    background: #245731;
     box-shadow: 0px 10px 30px rgba(37, 37, 49, 0.932);
     transition: 0.5s ease-in-out;
 }
@@ -178,7 +178,7 @@ h3 {
 
 .mobile-nav-link.active,
 .nav-link.black.active {
-    color: #524949;
+    color: #887f7f;
     transition: 0.3s ease-in-out;
 }
 
@@ -190,22 +190,21 @@ h3 {
 }
 
 #logo a {
-  position: relative;
-  display: inline-block;
-  height: 50px;
+  position: flex;
+  display: center;
+  height: 100%;
 }
 
 #logonav,
 #nav-logo {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: flex;
+  align-items: center;
   height: 100%;
   width: auto;
 }
 
 #logonav {
-  position: relative;
+  position: absolute;
 }
 
 /* ===== Mobile override: show full desktop nav on small screens ===== */
@@ -255,7 +254,6 @@ h3 {
 
     #nav-bar.scroll {
     background: #2e753b;
-
     box-shadow: 0px 10px 30px rgba(37, 37, 49, 0.932);
     transition: 0.5s ease-in-out;
     }
@@ -351,6 +349,12 @@ Additionally:
 }
 
 #idris-logo h1 {
+  text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
   position: absolute;
   top: 60%;
   left: 50%;
@@ -360,8 +364,8 @@ Additionally:
   white-space: nowrap;
   overflow: visible;
   text-overflow: clip;
-  font-size: clamp(1.0rem, 4.0vw, 2.2rem);
-  font-weight: 700;
+  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+  font-weight: 900;
   text-transform: uppercase;
   color: #cccccc;
   width: auto;
@@ -370,6 +374,12 @@ Additionally:
 }
 
 #idris-logo > .button {
+ text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
   position: absolute;
   top: 65%;
   left: 50%;
@@ -609,7 +619,8 @@ Key Elements:
   #about-idris h2 {
     font-size: 2rem;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 30px;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
@@ -619,7 +630,7 @@ Key Elements:
     font-weight: 800;
     color: #646363;
     line-height: 1.8; /* Improves readability with better line spacing */
-    margin: 0 auto 30px; /* Centers paragraph and adds space below */
+    margin: 0 auto 10px; /* Centers paragraph and adds space below */
     max-width: 600px; /* Restricts width for better readability */
   }
   
@@ -627,7 +638,7 @@ Key Elements:
     list-style: disc; /* Adds default bullet points */
     display: inline-block; /* Centers the list */
     padding-left: 1.5rem; /* Increases spacing for the bullet points */
-    margin: 16px auto 50px; /* Centers the list */
+    margin: 6px auto 50px; /* Centers the list */
     max-width: 500px; /* Limits the width for consistency */
     text-align: left; /* Aligns list items to the left */
   }
@@ -2155,19 +2166,7 @@ This section provides a clean and professional interface for user interaction an
     margin-bottom: 0px;
   }
 }
-/* issue fix 04-01-2025 start */
-/* nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
-    pointer-events: none;
-  }
-  body > header {
-    background: #ffffff00;
-  }
-  
-  #nav-bar.scroll {
-    background: #107a1593;
-  }
-   */
-/* issue fix end   */
+
 
 /* Inquiry form styling */
 .inquiry-form {
@@ -2211,4 +2210,287 @@ This section provides a clean and professional interface for user interaction an
 
 .inquiry-form button:hover {
   background-color: #245731;
+}
+
+/* =========================
+   REVIEWS PAGE
+========================= */
+#reviews-hero{
+    height: 100dvh; /* Full viewport height */
+    width: 100%; /* Full width */
+    background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)), 
+                url("../images/idris-images/homepage.webp") no-repeat center center;
+    background-size: cover; /* Ensures the image covers the container */
+    background-attachment: scroll; /* Better performance on mobile (change from 'fixed') */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition of the image */
+    overflow: hidden;
+    z-index: 0;
+}
+
+#reviews-hero #textlocation h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 10px;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+}
+
+#reviews-hero #textlocation p {
+  color: #e5e5e5;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
+}
+
+.reviews-intro {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.reviews-container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #222;
+}
+
+.section-heading p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.featured-review-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.featured-review-image img {
+  width: 100%;
+  display: block;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+.featured-review-text h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 16px;
+  color: #222;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.featured-review-text p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #555;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+}
+
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+}
+
+.review-card img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+#reviews-cta .cta-box {
+  text-align: center;
+  background: #f7f7f7;
+  padding: 55px 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+#reviews-cta .cta-box h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 12px;
+}
+
+#reviews-cta .cta-box p {
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: #666;
+  line-height: 1.8;
+}
+
+#reviews-cta .button,
+.featured-review-text .button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 2px solid #2e753b;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #2e753b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.25s ease;
+}
+
+#reviews-cta .button:hover,
+.featured-review-text .button:hover {
+  background: #2e753b;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .featured-review-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .review-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #reviews-hero {
+    padding: 110px 15px 40px;
+  }
+}
+
+.split-section {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.split-image img {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.split-content h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.split-content p {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #646363;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.reviews-grid {
+  width: min(1100px, 92%);
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-item {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.review-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+}
+
+.review-item img {
+  width: 100%;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+}
+
+#about-idris .button,
+.split-content .button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  color: #2e753b;
+  background-color: transparent;
+  border: 2px solid #2e753b;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.25s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#about-idris .button:hover,
+.split-content .button:hover {
+  background: #2e753b;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 }
