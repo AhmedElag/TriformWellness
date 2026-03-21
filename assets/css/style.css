@@ -189,23 +189,24 @@ h3 {
     transition: 0.3s ease-in-out;
 }
 
-#logo a {
-  position: flex;
-  display: center;
-  height: 100%;
-}
+#logo {
+    flex: 0 0 auto;
+  }
+  #logo img {
+    height: clamp(28px, 6vw, 40px);
+    width: auto;
+  }
 
-#logonav,
-#nav-logo {
-  position: flex;
-  align-items: center;
-  height: 100%;
-  width: auto;
-}
-
-#logonav {
-  position: absolute;
-}
+  #nav-menu,
+  nav .menu,
+  #primary-nav {
+    display: flex !important;
+    margin-left: auto;            /* push to right */
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    gap: clamp(6px, 2vw, 14px);   /* fluid spacing between items */
+  }
 
 /* ===== Mobile override: show full desktop nav on small screens ===== */
 @media (max-width: 900px) {
@@ -360,12 +361,11 @@ Additionally:
   left: 50%;
   transform: translate(-50%, 0);
   opacity: 1;
-
   white-space: nowrap;
   overflow: visible;
   text-overflow: clip;
-  font-size: clamp(2.1rem, 5.5vw, 3.4rem);
-  font-weight: 900;
+  font-size: clamp(1.0rem, 3.5vw, 2.0rem);
+  font-weight: 700;
   text-transform: uppercase;
   color: #cccccc;
   width: auto;
@@ -397,6 +397,12 @@ Additionally:
 }
 
 #idris-logo > a.button {
+   text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -2044,14 +2050,41 @@ This section provides a clean and professional interface for user interaction an
 @media (max-width: 768px) {
     #idris-logo > img {
         opacity: 1;
+        top: 50%;
         max-width: 85%;
     }
 
     #idris-logo > h1 {
+       text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
         opacity: 1;
+        top: 58%;
         font-size: 75%;
     }
-
+    #idris-logo > a.button:first-of-type{
+       text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
+        opacity: 1;
+        top: 60%;
+    }
+       #idris-logo > a.button:nth-of-type(2){
+         text-shadow: 
+  0 0 4px rgba(0,0,0,1),
+  0 0 8px rgba(0,0,0,1),
+  0 4px 20px rgba(0,0,0,1),
+  0 8px 30px rgba(0,0,0,0.9),
+  0 0 30px rgba(255,255,255,0.3);
+        opacity: 1;
+        top: 65%;
+    }
     #reviews {
         padding: 0 10px;
         z-index: 2;
@@ -2160,7 +2193,19 @@ This section provides a clean and professional interface for user interaction an
     }
 
 }
-
+/* issue fix 04-01-2025 start */
+/* nav#mobile-nav:not(.nav--open) ul#mobile-nav-menu {
+    pointer-events: none;
+  }
+  body > header {
+    background: #ffffff00;
+  }
+  
+  #nav-bar.scroll {
+    background: #107a1593;
+  }
+   */
+/* issue fix end   */
 @media (max-width: 444px) {
   .tab-item:last-child {
     margin-bottom: 0px;

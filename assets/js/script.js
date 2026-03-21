@@ -40,24 +40,16 @@ function setNavbarTransparency() {
   if (!myNav) return;
 
   if (window.scrollY <= 10) {
-    setSolidNavbar();
+    setTopNavbar();
   } else {
-    setTransparentNavbar();
+    setScrolledNavbar();
   }
 }
 
-function setSolidNavbar() {
+function setTopNavbar() {
   if (!myNav) return;
 
   myNav.classList.remove("scroll");
-
-  if (whiteLogo) {
-    whiteLogo.classList.remove("transparent");
-  }
-
-  if (redLogo) {
-    redLogo.classList.add("transparent");
-  }
 
   Array.from(menuLinks).forEach((menuLink) =>
     menuLink.classList.remove("black")
@@ -68,18 +60,10 @@ function setSolidNavbar() {
   }
 }
 
-function setTransparentNavbar() {
+function setScrolledNavbar() {
   if (!myNav) return;
 
   myNav.classList.add("scroll");
-
-  if (whiteLogo) {
-    whiteLogo.classList.add("transparent");
-  }
-
-  if (redLogo) {
-    redLogo.classList.remove("transparent");
-  }
 
   Array.from(menuLinks).forEach((menuLink) =>
     menuLink.classList.add("black")
