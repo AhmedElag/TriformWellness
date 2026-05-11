@@ -2266,17 +2266,20 @@ This section provides a clean and professional interface for user interaction an
 /* =========================
    REVIEWS PAGE
 ========================= */
-#reviews-hero{
-    height: 100dvh; /* Full viewport height */
-    width: 100%; /* Full width */
-    background: linear-gradient(rgba(34, 34, 34, 0.3), rgba(34, 34, 34, 0.3)), 
-                url("../images/idris-images/homepage.webp") no-repeat center center;
-    background-size: cover; /* Ensures the image covers the container */
-    background-attachment: scroll; /* Better performance on mobile (change from 'fixed') */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents repetition of the image */
-    overflow: hidden;
-    z-index: 0;
+#reviews-hero {
+  width: 100%;
+  height: 100vh;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(46, 117, 59, 0.95) 0%,
+    rgba(46, 117, 59, 0.75) 25%,
+    rgba(46, 117, 59, 0.35) 55%,
+    rgba(255, 255, 255, 1) 100%
+  );
+
+  position: relative;
+  overflow: hidden;
 }
 
 #reviews-hero #textlocation h1 {
@@ -2543,5 +2546,99 @@ This section provides a clean and professional interface for user interaction an
 @media (max-width: 600px) {
   .reviews-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   Shop Page
+================================ */
+
+.shop-intro {
+  padding: 40px 20px 10px;
+  text-align: center;
+}
+
+.shop-intro-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.shop-intro h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.shop-intro p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 420px));
+  gap: 40px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.shop-card {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.shop-card img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.shop-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.shop-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+stripe-buy-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Optional hover effect */
+.shop-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.shop-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Mobile */
+@media screen and (max-width: 800px) {
+  .shop-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-card {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .shop-card img {
+    height: 360px;
   }
 }

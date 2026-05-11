@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Data -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Triform Wellness merch shop" />
+    <meta name="keywords" content="Triform Wellness, merch, t-shirt, Idris Badoolah, personal training, stretch therapy" />
+    <meta name="author" content="Ahmed" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/logo.png" />
+
+    <!-- Title -->
+    <title>Shop — Triform Wellness</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/animate.min.css" />
+
+    <!-- Stripe Buy Button Script -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+  </head>
+
+  <!-- Calendly Floating Booking Button -->
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+  <script>
+    window.addEventListener("load", function () {
+      Calendly.initBadgeWidget({
+        url: "https://calendly.com/ahmelag/30min",
+        text: "Book Free Consultation",
+        color: "#2e753b",
+        textColor: "#ffffff",
+        branding: false
+      });
+    });
+  </script>
+
+  <body class="animate__animated animate__fadeIn">
+    <header>
+      <div id="reviews-hero">
+        <!-- Unified Navigation Bar -->
+        <nav id="nav-bar" aria-label="Main navigation">
+          <div id="logo">
+            <a href="index.html">
+              <img
+                id="logonav"
+                src="assets/images/logo.png"
+                alt="Triform Wellness logo, home"
+                height="50"
+              />
+              <img
+                id="nav-logo"
+                class="transparent"
+                src="assets/images/logo.png"
+                alt="Triform Wellness logo variant"
+                height="50"
+              />
+            </a>
+          </div>
+
+          <ul id="nav-menu" class="menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="services.html" class="nav-link">Services</a></li>
+            <li><a href="shop.html" class="active nav-link">Shop</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div id="splash"></div>
+      </div>
+    </header>
+
+    <!-- Hero Text -->
+    <section>
+      <div id="textlocation">
+        <h1>TFW Merch Shop</h1>
+      </div>
+    </section>
+
+    <!-- Shop Intro -->
+    <section class="shop-intro">
+      <div class="shop-intro-content">
+        <h2>Triform Wellness Merch</h2>
+        <p>
+          Simple everyday pieces made for training, recovery, and representing
+          the Triform Wellness brand.
+        </p>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section" id="shop-products">
+      <div class="shop-grid">
+        <!-- Ivory Shirt -->
+        <div class="shop-card">
+          <img
+            src="assets/images/tfwIvoryShirt.png"
+            alt="Oversized Ivory T-shirt"
+          />
+
+          <h3>Oversized Ivory T-shirt</h3>
+          <p class="shop-price">$35.00 CAD</p>
+
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TVyHKHnnZSRDEBaLtsx0T8H"
+            publishable-key="pk_live_51RqExWHnnZSRDEBaeMclfEoYN8Hm7adVi1K2uVE0zLEWOmqvfQH54fdtNaSmfQ52ckfAo8Z2ta6SzwR7eL6McqYb00Xen536YU"
+          >
+          </stripe-buy-button>
+        </div>
+
+        <!-- Black Shirt -->
+        <div class="shop-card">
+          <img
+            src="assets/images/tfwblackshirt.png"
+            alt="Oversized Black T-shirt"
+          />
+
+          <h3>Oversized Black T-shirt</h3>
+          <p class="shop-price">$35.00 CAD</p>
+
+          <stripe-buy-button
+            buy-button-id="buy_btn_1TVyKTHnnZSRDEBadHCP6sUq"
+            publishable-key="pk_live_51RqExWHnnZSRDEBaeMclfEoYN8Hm7adVi1K2uVE0zLEWOmqvfQH54fdtNaSmfQ52ckfAo8Z2ta6SzwR7eL6McqYb00Xen536YU"
+          >
+          </stripe-buy-button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="small-section">
+      <div id="about-idris">
+        <h2>Questions Before Ordering?</h2>
+        <p>
+          Reach out if you have questions about sizing, availability, or pickup
+          options.
+        </p>
+        <a href="contact.html" class="button">Get In Touch</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="small-section">
+      <div id="footer">
+        <div id="social-links">
+          <ul>
+            <li>
+              <a
+                href="https://www.instagram.com/idrisbadoolah/"
+                title="Instagram"
+                rel="noopener"
+                aria-label="Visit Idris' Instagram page"
+                target="_blank"
+              >
+                <i class="fa fa-instagram"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="mailto:idrisbadoolah@gmail.com"
+                rel="noopener"
+                aria-label="Send an email to Idris"
+              >
+                <i class="fa fa-envelope"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <p class="company-name">© Triform Wellness</p>
+        <p class="developer-name">Developed by Ahmed Elag</p>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.min.js"
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Local JavaScript -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- Font Awesome Script -->
+    <script
+      src="https://kit.fontawesome.com/d93feb1e77.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
